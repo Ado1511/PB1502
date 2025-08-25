@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pame & Beto ✈ Corrientes 2026</title>
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="site-header">
+    <div class="container wrap">
+      <div class="brand">Pame & Beto Airlines ✈</div>
+      <nav class="site-nav">
+        <a href="#home">Inicio</a>
+        <a href="#itinerario">Itinerario</a>
+        <a href="#guia">Guía</a>
+        <a href="#hoteles">Hoteles</a>
+        <a href="#rsvp">RSVP</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="title">
+        <h1>Pame & Beto</h1>
+        <p>Vuelo PB2026 — Destino Corrientes</p>
+        <p>13 al 19 de febrero de 2026</p>
+        <p id="countdown" class="btn" style="display:inline-block;margin-top:12px;"></p>
+      </div>
+    </section>
+
+    <!-- Itinerario estilo tablero -->
+    <section id="itinerario" class="container section-pad">
+      <h2 class="section-title"><i class="fa-solid fa-plane-departure"></i> Flight Schedule</h2>
+
+      <div class="fids fids-animated" aria-label="Itinerario de eventos">
+        <table>
+          <thead>
+            <tr>
+              <th>Fecha</th><th>Evento</th><th>Hora</th><th>Lugar</th><th class="status">Estado</th>
+            </tr>
+          </thead>
+          <tbody id="fids-body">
+            <tr><td>Vie 13/02</td><td>Kabalat Shabat</td><td>Tarde/Noche</td><td>Templo</td><td class="status">ON TIME</td></tr>
+            <tr><td>Sáb 14/02</td><td>Shajarit</td><td>Mañana</td><td>Templo</td><td class="status">ON TIME</td></tr>
+            <tr><td>Sáb 14/02</td><td>Shabat Jatán y Kalá (Brunch)</td><td>Mediodía</td><td>Salón</td><td class="status">BOARDING</td></tr>
+            <tr><td>Dom 15/02</td><td>Casamiento</td><td>18:30</td><td>Salón</td><td class="status">GATE OPEN</td></tr>
+            <tr><td>Lun 16/02</td><td>Cumple 40 de Beto</td><td>—</td><td>—</td><td class="status">SPECIAL</td></tr>
+            <tr><td>16–17/02</td><td>Carnaval</td><td>—</td><td>Corsódromo “Nolo Alías”</td><td class="status">FEST</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Guía Corrientes -->
+    <section id="guia" class="container section-pad">
+      <h2 class="section-title"><i class="fa-solid fa-map-location-dot"></i> Travel Guide</h2>
+      <div class="cards">
+        <article class="card">
+          <h3><i class="fa-solid fa-leaf"></i> Esteros del Iberá</h3>
+          <p>Safari de fauna, navegaciones y atardeceres únicos.</p>
+        </article>
+        <article class="card">
+          <h3><i class="fa-solid fa-mountain-sun"></i> Parque Mburucuyá</h3>
+          <p>Senderos autoguiados, naturaleza y descanso.</p>
+        </article>
+        <article class="card">
+          <h3><i class="fa-solid fa-landmark"></i> Itatí & Costanera</h3>
+          <p>Paseos históricos y río para la tardecita.</p>
+        </article>
+        <article class="card">
+          <h3><i class="fa-solid fa-fish"></i> Esquina / Paso de la Patria</h3>
+          <p>Pesca deportiva, playas y gastronomía.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Hoteles & Transporte -->
+    <section id="hoteles" class="container section-pad">
+      <h2 class="section-title"><i class="fa-solid fa-person-walking-luggage"></i> Boarding Info</h2>
+      <div class="boarding-list">
+        <div class="boarding-card">
+          <div class="tag">HOTEL</div>
+          <h3>Hotel A • Centro</h3>
+          <p>Ubicación ideal, traslado fácil a eventos.</p>
+          <a href="#" class="btn">Reservar</a>
+        </div>
+        <div class="boarding-card">
+          <div class="tag">HOTEL</div>
+          <h3>Hotel B • Costanera</h3>
+          <p>Vista al río, perfecto para paseos.</p>
+          <a href="#" class="btn">Reservar</a>
+        </div>
+        <div class="boarding-card">
+          <div class="tag">TRANSFERS</div>
+          <h3>Traslados</h3>
+          <p>Desde aeropuerto/terminal al hotel y salones.</p>
+          <a href="#" class="btn">Coordinar</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section id="rsvp" class="container section-pad">
+      <h2 class="section-title"><i class="fa-solid fa-ticket"></i> Check-in (RSVP)</h2>
+      <form class="rsvp" onsubmit="return rsvpSubmit(event)">
+        <div class="rsvp-left">
+          <label>Nombre y Apellido
+            <input type="text" name="nombre" required>
+          </label>
+          <label>Email
+            <input type="email" name="email" required>
+          </label>
+          <label>Cantidad de acompañantes
+            <input type="number" name="acompanantes" min="0" value="0">
+          </label>
+          <label>Comentarios / Restricciones alimentarias
+            <input type="text" name="comentarios" placeholder="Sin gluten, kosher, etc.">
+          </label>
+          <label>Asistirás
+            <select name="asistencia" required>
+              <option value="si">Sí, confirmo</option>
+              <option value="no">No podré</option>
+            </select>
+          </label>
+        </div>
+        <div class="rsvp-right">
+          <div class="rsvp-ticket">
+            <div class="rsvp-head">
+              <span>PB2026</span>
+              <span><i class="fa-solid fa-plane"></i></span>
+            </div>
+            <div class="rsvp-body">
+              <div><small>DE</small><strong>Invitado</strong></div>
+              <div><small>A</small><strong>Corrientes</strong></div>
+              <div><small>FECHA</small><strong>15/02/2026</strong></div>
+            </div>
+            <div class="rsvp-footer">
+              <span class="perforation"></span>
+              <button type="submit" class="btn">Enviar Check-in</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <p id="rsvp-msg" class="ok-msg"></p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>PB2026 • Corrientes • Hecho con ❤️ por Pame & Beto</p>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>

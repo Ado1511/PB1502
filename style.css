@@ -76,7 +76,7 @@ body{
   background-color:var(--negro);
   background-image:
     radial-gradient(ellipse at center, rgba(0,0,0,.25), rgba(0,0,0,.6)),
-    url('assets/img/save-the-date.jpg');
+    url('assets/img/pamebeto.jpg');
   background-position:center;
   background-size:cover;
 }

@@ -40,28 +40,67 @@
       </div>
     </section>
 
-    <!-- Itinerario estilo tablero -->
-    <section id="itinerario" class="container section-pad">
-      <h2 class="section-title"><i class="fa-solid fa-plane-departure"></i> Flight Schedule</h2>
+<!-- Itinerario estilo tablero -->
+<section id="itinerario" class="container section-pad">
+  <h2 class="section-title"><i class="fa-solid fa-plane-departure"></i> Flight Schedule</h2>
 
-      <div class="fids fids-animated" aria-label="Itinerario de eventos">
-        <table>
-          <thead>
-            <tr>
-              <th>Fecha</th><th>Evento</th><th>Hora</th><th>Lugar</th><th class="status">Estado</th>
-            </tr>
-          </thead>
-          <tbody id="fids-body">
-            <tr><td>Vie 13/02</td><td>Kabalat Shabat</td><td>Tarde/Noche</td><td>Templo</td><td class="status">ON TIME</td></tr>
-            <tr><td>Sáb 14/02</td><td>Shajarit</td><td>Mañana</td><td>Templo</td><td class="status">ON TIME</td></tr>
-            <tr><td>Sáb 14/02</td><td>Shabat Jatán y Kalá (Brunch)</td><td>Mediodía</td><td>Salón</td><td class="status">BOARDING</td></tr>
-            <tr><td>Dom 15/02</td><td>Casamiento</td><td>18:30</td><td>Salón</td><td class="status">GATE OPEN</td></tr>
-            <tr><td>Lun 16/02</td><td>Cumple 40 de Beto</td><td>—</td><td>—</td><td class="status">SPECIAL</td></tr>
-            <tr><td>16–17/02</td><td>Carnaval</td><td>—</td><td>Corsódromo “Nolo Alías”</td><td class="status">FEST</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+  <div class="fids fids-animated" aria-label="Itinerario de eventos">
+    <div class="fids-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th><th>Evento</th><th>Hora</th><th>Lugar</th><th class="status">Estado</th>
+          </tr>
+        </thead>
+        <tbody id="fids-body">
+          <tr>
+            <td>Vie 13/02</td>
+            <td>Kabalat Shabat</td>
+            <td>Tarde/Noche</td>
+            <td>Templo</td>
+            <td class="status" data-status="ON TIME"><span class="flip">ON TIME</span></td>
+          </tr>
+          <tr>
+            <td>Sáb 14/02</td>
+            <td>Shajarit</td>
+            <td>Mañana</td>
+            <td>Templo</td>
+            <td class="status" data-status="ON TIME"><span class="flip">ON TIME</span></td>
+          </tr>
+          <tr>
+            <td>Sáb 14/02</td>
+            <td>Shabat Jatán y Kalá (Brunch)</td>
+            <td>Mediodía</td>
+            <td>Salón</td>
+            <td class="status" data-status="BOARDING"><span class="flip">BOARDING</span></td>
+          </tr>
+          <tr>
+            <td>Dom 15/02</td>
+            <td>Casamiento</td>
+            <td>18:30</td>
+            <td>Salón</td>
+            <td class="status" data-status="GATE OPEN"><span class="flip">GATE OPEN</span></td>
+          </tr>
+          <tr>
+            <td>Lun 16/02</td>
+            <td>Cumple 40 de Beto</td>
+            <td>—</td>
+            <td>—</td>
+            <td class="status" data-status="SPECIAL"><span class="flip">SPECIAL</span></td>
+          </tr>
+          <tr>
+            <td>16–17/02</td>
+            <td>Carnaval</td>
+            <td>—</td>
+            <td>Corsódromo “Nolo Alías”</td>
+            <td class="status" data-status="FEST"><span class="flip">FEST</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 
     <!-- Guía Corrientes -->
     <section id="guia" class="container section-pad">
@@ -138,7 +177,7 @@
         <div class="rsvp-right">
           <div class="rsvp-ticket">
             <div class="rsvp-head">
-              <span>PB2026</span>
+              <span>PB1502</span>
               <span><i class="fa-solid fa-plane"></i></span>
             </div>
             <div class="rsvp-body">
@@ -160,7 +199,7 @@
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
-      <p>PB2026 • Corrientes • Hecho con ❤️ por Pame & Beto</p>
+      <p>PB1502 • Corrientes • Hecho con ❤️ para Pame & Beto</p>
     </div>
   </footer>
 

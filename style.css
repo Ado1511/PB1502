@@ -78,7 +78,7 @@ body{
     radial-gradient(ellipse at center, rgba(0,0,0,.25), rgba(0,0,0,.6)),
     url('assets/img/pamebeto.jpg');
   background-position:center;
-  background-size:cover;
+  background-size:contain;
 }
 .hero .title{ text-align:center; text-shadow:0 2px 12px rgba(0,0,0,.4); max-width:60ch; padding:0 1rem; }
 .hero h1{ font-family:"Montserrat",sans-serif; font-weight:800; font-size:clamp(2rem,6vw,4rem); margin:0 0 .25rem; }

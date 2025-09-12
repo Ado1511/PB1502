@@ -277,22 +277,48 @@ body{
   }
 
 /* Boarding cards (Hoteles) */
-.boarding-list{
-    display:grid; gap:1rem; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+/* ===== Regalos (datos bancarios) ===== */
+.gift-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap:1rem;
 }
-.boarding-card{
-    background: var(--blanco);
-    color: #222;
-    border-radius:16px;
-    padding:1rem 1.1rem 1.3rem;
-    border: 2px dashed var(--dorado);
-    position:relative;
+
+.gift-card{
+  background: var(--blanco);
+  color:#222;
+  border-radius:16px;
+  padding:1.1rem 1.2rem 1.3rem;
+  border:2px dashed var(--dorado);
+  position:relative;
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
 }
-.boarding-card .tag{
-    position:absolute; top:-10px; left:14px;
-    background: var(--amarillo); color: var(--negro);
-    font-weight:800; padding:.25rem .5rem; border-radius:6px;
+
+.gift-card .tag{
+  position:absolute; top:-10px; left:14px;
+  background: var(--amarillo); color: var(--negro);
+  font-weight:800; padding:.25rem .6rem; border-radius:6px;
+  letter-spacing:.3px;
 }
+
+.gift-card h3{
+  font-family:"Montserrat",sans-serif;
+  margin:.1rem 0 .6rem;
+}
+
+.gift-list{
+  list-style:none; margin:0; padding:0;
+  display:grid; gap:.45rem;
+  font-size:1rem;
+}
+.gift-list li strong{ display:inline-block; min-width:120px; }
+
+.gift-card .note{
+  display:block; margin-top:.6rem; color:#666; font-size:.9rem;
+}
+
+.gift-list li.intl{ opacity:.9; }
+
 
 /* RSVP / Boarding Pass form */
 .rsvp{ display:grid; gap:1.2rem; grid-template-columns: 1fr 1fr; }

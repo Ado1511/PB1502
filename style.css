@@ -244,13 +244,37 @@ body{
     line-height: 1.4;
 }
 
-.card .btn{
-    align-self: flex-start;
-    margin-top: auto;
-    padding: .55rem 1rem;
+.cards .btn{
+    display: inline-block;
+    margin-top: 1rem;
+    padding: .6rem 1rem;
     font-size: .9rem;
-    border-radius: 8px;
-}
+    border-radius: 6px;
+    text-align: center;
+    width: auto;
+    min-width: 120px;
+    transition: transform .08s ease, box-shadow .2s ease, background-color .2s ease;
+  }
+  
+  .cards .btn:hover{
+    background: #ffdf4a;       /* un dorado más claro */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,.25);
+  }
+  
+  .cards .btn:active{
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0,0,0,.25);
+  }
+  
+  /* Ajuste responsivo */
+  @media (max-width: 640px){
+    .cards .btn{
+      width: 100%;             /* botones a todo el ancho en mobile */
+      min-width: unset;
+      margin-top: .75rem;
+    }
+  }
 
 /* Boarding cards (Hoteles) */
 .boarding-list{

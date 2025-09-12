@@ -165,7 +165,7 @@ function rsvpSubmit(e){
       `👤 Nombre: ${payload.nombre || '-'}`,
       `📧 Email: ${payload.email || '-'}`,
       `✅ Asistencia: ${payload.asistencia === 'si' ? 'Sí, confirmo' : 'No podré'}`,
-      `🗓️ Vuelo PB2026 – Corrientes 2026`
+      `🗓️ Vuelo PB1502 – Corrientes 2026`
     ];
     if (payload.acompanantes && payload.acompanantes !== '0') {
       lines.splice(4, 0, `👥 Acompañantes: ${payload.acompanantes}`);

@@ -78,7 +78,7 @@ body{
   background-color: #000;
   background-image:
     radial-gradient(ellipse at center, rgba(0,0,0,.25), rgba(0,0,0,.6)),
-    url('assets/img/pamebeto.jpg'); /* tu imagen */
+    url('assets/img/pamebeto2.jpg'); /* tu imagen */
 
   background-position: center; /* centra la imagen */
   background-size: cover;      /* llena el contenedor */

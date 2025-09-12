@@ -33,7 +33,7 @@
     <section class="hero">
       <div class="title">
         <h1>Pame & Beto</h1>
-        <p>Vuelo PB2026 — Destino Corrientes</p>
+        <p>Vuelo PB1502 — Destino Corrientes</p>
         <p>13 al 19 de febrero de 2026</p>
         <p id="countdown" class="btn" style="display:inline-block;margin-top:12px;"></p>
       </div>
@@ -143,7 +143,7 @@
 <section id="regalos" class="container section-pad">
   <h2 class="section-title"><i class="fa-solid fa-gift"></i> Regalos</h2>
   <p style="margin:.25rem 0 1.25rem; color:#ddd;">
-    Si desean hacernos un regalo, pueden hacerlo mediante transferencia. ¡Gracias por acompañarnos! 💛
+    Si desean hacernos un regalo, pueden hacerlo mediante transferencia. ¡Gracias por acompañarnos! ❤️
   </p>
 
   <div class="gift-grid">
@@ -153,13 +153,19 @@
       <div class="tag">PAME</div>
       <h3>Cuenta Bancaria</h3>
       <ul class="gift-list">
-        <li><strong>Titular:</strong> Pamela [Apellido]</li>
-        <li><strong>Banco:</strong> [Nombre del Banco]</li>
-        <li><strong>Alias:</strong> pame.ejemplo.alias</li>
-        <li><strong>CBU:</strong> 0000000000000000000000</li>
-        <li class="intl"><strong>SWIFT/IBAN:</strong> [opcional]</li>
+        <li><strong>Titular:</strong> <span>Pamela [Apellido]</span></li>
+        <li><strong>Banco:</strong> <span>[Nombre del Banco]</span></li>
+        <li><strong>Alias:</strong> <span id="aliasP">pame.ejemplo.alias</span>
+          <button class="copy-btn" data-copy="#aliasP">Copiar</button>
+        </li>
+        <li><strong>CBU:</strong> <span id="cbuP">0000000000000000000000</span>
+          <button class="copy-btn" data-copy="#cbuP">Copiar</button>
+        </li>
+        <li class="intl"><strong>SWIFT/IBAN:</strong> <span id="swiftP">[opcional]</span>
+          <button class="copy-btn" data-copy="#swiftP">Copiar</button>
+        </li>
       </ul>
-      <small class="note">Gracias de corazón por acompañarnos 🌟</small>
+      <small class="note">Gracias de corazón por acompañarnos 🥂</small>
     </article>
 
     <!-- Tarjeta Beto -->
@@ -167,17 +173,24 @@
       <div class="tag">BETO</div>
       <h3>Cuenta Bancaria</h3>
       <ul class="gift-list">
-        <li><strong>Titular:</strong> Alberto [Apellido]</li>
-        <li><strong>Banco:</strong> [Nombre del Banco]</li>
-        <li><strong>Alias:</strong> beto.ejemplo.alias</li>
-        <li><strong>CBU:</strong> 0000000000000000000000</li>
-        <li class="intl"><strong>SWIFT/IBAN:</strong> [opcional]</li>
+        <li><strong>Titular:</strong> <span>Alberto [Apellido]</span></li>
+        <li><strong>Banco:</strong> <span>[Nombre del Banco]</span></li>
+        <li><strong>Alias:</strong> <span id="aliasB">beto.ejemplo.alias</span>
+          <button class="copy-btn" data-copy="#aliasB">Copiar</button>
+        </li>
+        <li><strong>CBU:</strong> <span id="cbuB">0000000000000000000000</span>
+          <button class="copy-btn" data-copy="#cbuB">Copiar</button>
+        </li>
+        <li class="intl"><strong>SWIFT/IBAN:</strong> <span id="swiftB">[opcional]</span>
+          <button class="copy-btn" data-copy="#swiftB">Copiar</button>
+        </li>
       </ul>
-      <small class="note">Tu gesto significa mucho para nosotros ✨</small>
+      <small class="note">Tu gesto significa mucho para nosotros 🍻</small>
     </article>
 
   </div>
 </section>
+
 
 
 

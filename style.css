@@ -74,48 +74,17 @@ body{
   min-height: 70vh;
   display: grid;
   place-items: center;
-  overflow: hidden;              /* recorta los bordes de los pseudo-elementos */
+
+  background-color: #000;
+  background-image:
+    radial-gradient(ellipse at center, rgba(0,0,0,.25), rgba(0,0,0,.6)),
+    url('assets/img/pamebeto.jpg'); /* tu imagen */
+
+  background-position: center; /* centra la imagen */
+  background-size: cover;      /* llena el contenedor */
+  background-repeat: no-repeat; /* evita que se repita */
 }
 
-/* Capa de fondo: la misma imagen, cubierta y difuminada para evitar barras */
-.hero::before{
-  content:"";
-  position:absolute; inset:0;
-  background:
-    url('assets/img/pamebeto.jpg') center/cover no-repeat;
-  filter: blur(12px);
-  transform: scale(1.08);        /* un pelín más grande para que el blur no deje bordes */
-}
-
-/* Capa oscura suave para contraste de los textos */
-.hero::after{
-  content:"";
-  position:absolute; inset:0;
-  background: radial-gradient(ellipse at center,
-               rgba(0,0,0,.25), rgba(0,0,0,.6));
-}
-
-/* Capa frontal: la foto completa SIN recorte, centrada */
-.hero > .hero-photo {
-  position:absolute; inset:0;
-  background:
-    url('assets/img/pamebeto.jpg') center/contain no-repeat; /* sin recorte */
-  z-index: 1;                      /* por encima de ::before y ::after */
-}
-
-/* El bloque de títulos encima de todo */
-.hero .title{
-  position: relative;
-  z-index: 2;
-  text-align:center;
-  text-shadow: 0 2px 12px rgba(0,0,0,.4);
-}
-
-/* Puedes ajustar el blur/relleno en mobile si querés */
-@media (max-width: 768px){
-  .hero{ min-height: 65vh; }
-  .hero::before{ filter: blur(10px); }
-}
 .hero .title{ text-align:center; text-shadow:0 2px 12px rgba(0,0,0,.4); max-width:60ch; padding:0 1rem; }
 .hero h1{ font-family:"Montserrat",sans-serif; font-weight:800; font-size:clamp(2rem,6vw,4rem); margin:0 0 .25rem; }
 .hero p{ font-size:clamp(1rem,2.5vw,1.25rem); margin:.15rem 0; }

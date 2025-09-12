@@ -71,21 +71,19 @@ body{
 /* Hero */
 .hero {
   position: relative;
-  width: 100%;
-  aspect-ratio: 3/4; /* ajusta al ratio de tu foto */
+  min-height: 70vh;
   display: grid;
   place-items: center;
-  overflow: hidden;
-}
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url('assets/img/pamebeto2.jpg') center/contain no-repeat;
-  z-index: -1;
-}
+  background-color: #000;
+  background-image:
+    radial-gradient(ellipse at center, rgba(0,0,0,.25), rgba(0,0,0,.6)),
+    url('assets/img/pamebeto.jpg'); /* tu imagen */
 
+  background-position: center; /* centra la imagen */
+  background-size: cover;      /* llena el contenedor */
+  background-repeat: no-repeat; /* evita que se repita */
+}
 
 .hero .title{ text-align:center; text-shadow:0 2px 12px rgba(0,0,0,.4); max-width:60ch; padding:0 1rem; }
 .hero h1{ font-family:"Montserrat",sans-serif; font-weight:800; font-size:clamp(2rem,6vw,4rem); margin:0 0 .25rem; }

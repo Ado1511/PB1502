@@ -77,54 +77,130 @@ body{
 .hero h1{ font-family: "Montserrat", sans-serif; font-weight:800; font-size: clamp(2rem, 6vw, 4rem); margin:0 0 .25rem; }
 .hero p{ font-size: clamp(1rem, 2.5vw, 1.25rem); margin:.15rem 0; }
 
-/* FIDS (tablero) */
-/* ===== Mejoras tablero tipo aeropuerto ===== */
+/* ===== FIDS (tablero de aeropuerto) — REEMPLAZO COMPLETO ===== */
 
-/* Cabecera pegajosa del tablero (queda visible al scrollear) */
-.fids thead th{
+/* Contenedor base (ya lo tenés, lo dejo por si falta) */
+.fids{
+    background: var(--negro);
+    color: var(--amarillo);
+    border-radius: 12px;
+    overflow: hidden;                 /* oculta bordes al hacer sticky */
+    border: 2px solid var(--dorado);
+  }
+  
+  /* Scroll horizontal en pantallas chicas */
+  .fids-wrapper{
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Tabla */
+  .fids table{
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 680px;                 /* más ancho que 560 para evitar apretujes */
+  }
+  
+  /* Cabecera pegajosa (queda visible al scrollear) */
+  .fids thead th{
     position: sticky;
     top: 0;
-    background: #0a0a0a;        /* contraste sobre fondo negro */
+    background: #0a0a0a;              /* buen contraste sobre negro */
     z-index: 1;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
   }
   
-  /* Ancho mínimo un poco mayor para evitar apretujes en mobile */
-  .fids table{
-    min-width: 680px;           /* sube desde 560px; ajusta si querés */
+  /* Celdas */
+  .fids th,
+  .fids td{
+    padding: .95rem 1.1rem;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    letter-spacing: .4px;
   }
   
-  /* Estado monoespaciado + look “pantalla” */
+  /* Rayado sutil para filas */
+  .fids tbody tr:nth-child(odd){
+    background: rgba(255,255,255,.03);
+  }
+  
+  /* ===== Columna de ESTADO ===== */
   .fids td.status{
-    font-family: "Courier New", Courier, monospace;
+    font-family: "Courier New", Courier, monospace; /* vibe tablero */
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--amarillo);
+    color: var(--amarillo);           /* color base si no hay data-status */
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
   }
   
-  /* Colores dinámicos por estado (usar data-status="...") */
+  /* Punto indicador antes del texto */
+  .fids td.status::before{
+    content: "●";
+    margin-right: .45rem;
+    filter: brightness(1.1);
+  }
+  
+  /* Colores dinámicos por estado (requiere data-status="...") */
   .fids td.status[data-status="ON TIME"]   { color: #4caf50; }  /* verde */
   .fids td.status[data-status="BOARDING"]  { color: #ffd200; }  /* amarillo */
   .fids td.status[data-status="GATE OPEN"] { color: #03a9f4; }  /* celeste */
   .fids td.status[data-status="SPECIAL"]   { color: #ff9800; }  /* naranja */
   .fids td.status[data-status="FEST"]      { color: #e91e63; }  /* rosa */
   
-  /* Punto indicador (badge) delante del estado */
-  .fids td.status::before{
-    content: "●";
-    margin-right: .4rem;
-    filter: brightness(1.1);
+  /* Flip del texto (envolver con <span class="flip">) */
+  .fids td.status .flip{
+    display: inline-block;
+    transform-origin: center;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    animation: flip-board .7s ease-in-out both;
   }
   
-  /* Flip más marcado (respetando tu prefers-reduced-motion) */
-  @keyframes flip-board {
+  /* Animación flip */
+  @keyframes flip-board{
     0%   { transform: rotateX(0deg);   opacity: 1; }
     45%  { transform: rotateX(90deg);  opacity: 0; }
     55%  { transform: rotateX(-90deg); opacity: 0; }
     100% { transform: rotateX(0deg);   opacity: 1; }
   }
-  .fids td.status .flip{
-    animation: flip-board .7s ease-in-out both;
+  
+  /* Respeto de preferencias de movimiento */
+  @media (prefers-reduced-motion: reduce){
+    .fids td.status .flip{ animation: none !important; }
   }
+  
+  /* ===== Escalado responsivo (tablet + desktop) ===== */
+  
+  /* Tablet >= 900px */
+  @media (min-width: 900px){
+    #itinerario.container{ width: min(1200px, 94%); }
+  
+    #itinerario .fids table{ min-width: 780px; }
+    #itinerario .fids th,
+    #itinerario .fids td{
+      font-size: 1rem;
+      padding: 1rem 1.2rem;
+    }
+    #itinerario .fids td.status{ font-size: 1.05rem; }
+  }
+  
+  /* Desktop >= 1100px */
+  @media (min-width: 1100px){
+    #itinerario.container{ width: min(1280px, 94%); }
+  
+    #itinerario .fids table{ min-width: 860px; }
+    #itinerario .fids th,
+    #itinerario .fids td{
+      font-size: 1.12rem;
+      padding: 1.2rem 1.45rem;
+    }
+    #itinerario .fids td.status{ font-size: 1.15rem; letter-spacing: 2px; }
+  }
+
+  
 /* Cards Travel Guide */
 .cards{
     display:grid;

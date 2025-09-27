@@ -275,7 +275,7 @@ body{
   
   .hero .title #countdown {
     position: absolute;
-    bottom: -120px; /* 120px desde el borde inferior del título */
+    bottom: -60px; /* 60px desde el borde inferior del título */
     left: 50%;
     transform: translateX(-50%);
     margin-top: 0; /* resetear el margin-top anterior */

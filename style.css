@@ -280,6 +280,26 @@ body{
     transform: translateX(-50%);
     margin-top: 0; /* resetear el margin-top anterior */
   }
+  
+  /* Optimizar tabla para móviles */
+  .fids table {
+    min-width: 100%; /* usar todo el ancho disponible */
+    font-size: 0.85rem; /* reducir tamaño de fuente */
+  }
+  
+  .fids th, .fids td {
+    padding: 0.6rem 0.4rem; /* reducir padding */
+    font-size: 0.8rem; /* fuente más pequeña */
+  }
+  
+  .fids th {
+    font-size: 0.75rem; /* headers aún más pequeños */
+  }
+  
+  .fids td.status {
+    font-size: 0.7rem; /* estado más pequeño */
+    letter-spacing: 1px; /* reducir espaciado de letras */
+  }
 }
 
 @media (max-width:860px){

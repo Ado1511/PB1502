@@ -311,6 +311,12 @@ body{
     font-size: 0.7rem; /* estado más pequeño */
     letter-spacing: 1px; /* reducir espaciado de letras */
   }
+  
+  /* Asegurar que el parpadeo funcione en móviles */
+  .fids td.status[data-status="ON TIME"] {
+    color: #4CAF50 !important; /* verde con !important */
+    animation: blink-green 3s ease-in-out infinite !important;
+  }
 }
 
 @media (max-width:860px){

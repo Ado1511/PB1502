@@ -28,7 +28,12 @@ function updateFIDS(){
   });
 }
 
-// Inicializar todos como ON TIME
+// Inicializar cuando la página esté cargada
+document.addEventListener('DOMContentLoaded', function() {
+  updateFIDS();
+});
+
+// También inicializar inmediatamente por si DOMContentLoaded ya pasó
 updateFIDS();
 
 // Actualizar cada 4 segundos para mantener el efecto de parpadeo
@@ -136,7 +141,7 @@ function rsvpSubmit(e){
   submitBtn.classList.add('is-loading');
   submitBtn.textContent = 'Enviando…';
 
-  // Payload
+  // Payload  
   const data = Object.fromEntries(new FormData(form).entries());
   const payload = {
     nombre:        data.nombre?.trim() || '',

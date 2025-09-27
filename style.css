@@ -266,10 +266,15 @@ body{
 @media (max-width: 768px) {
   .hero .title {
     margin-top: 160px; /* en móvil lo bajamos un poco más */
+    position: relative; /* para posicionar el contador */
   }
   
   .hero .title #countdown {
-    margin-top: 250px; /* contador 250px más abajo en móvil */
+    position: absolute;
+    bottom: -180px; /* 180px desde el borde inferior del título */
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0; /* resetear el margin-top anterior */
   }
 }
 

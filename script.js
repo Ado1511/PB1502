@@ -13,20 +13,26 @@ function tick(){
 }
 tick(); setInterval(tick, 1000);
 
-// ===== Mini flip aleatorio en estados del FIDS =====
-function randomizeFIDS(){
-  const statuses = ["ON TIME","GATE OPEN","BOARDING","SPECIAL","FEST"];
+// ===== Estados del FIDS - todos ON TIME parpadeando =====
+function updateFIDS(){
   const cells = document.querySelectorAll("#fids-body td.status");
   cells.forEach((cell)=>{
-    const next = statuses[(Math.floor(Math.random()*statuses.length))];
+    // Todos los vuelos están ON TIME
     const span = document.createElement('span');
     span.className = 'flip';
-    span.textContent = next;
+    span.textContent = 'ON TIME';
     cell.innerHTML = "";
     cell.appendChild(span);
+    // Asegurar que tenga el atributo data-status correcto
+    cell.setAttribute('data-status', 'ON TIME');
   });
 }
-setInterval(randomizeFIDS, 3500);
+
+// Inicializar todos como ON TIME
+updateFIDS();
+
+// Actualizar cada 4 segundos para mantener el efecto de parpadeo
+setInterval(updateFIDS, 4000);
 
 // ===== Helper: abrir WhatsApp con número normalizado =====
 function openWhatsApp(rawNumber, text) {

@@ -264,6 +264,10 @@ body{
 
 /* Responsive */
 @media (max-width: 768px) {
+  .hero {
+    min-height: 90vh; /* aumentar altura para que el contador no se desborde */
+  }
+  
   .hero .title {
     margin-top: 160px; /* en móvil lo bajamos un poco más */
     position: relative; /* para posicionar el contador */

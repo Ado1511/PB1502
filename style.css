@@ -335,7 +335,7 @@ button.is-loading{ opacity:.7; pointer-events:none; }
   background: var(--amarillo);
   color: var(--negro);
   border: none;
-  padding: 1.5rem 1.25rem; /* doble de alto: de .75rem a 1.5rem */
+  padding: 1.5rem 2.5rem; /* doble de ancho: de 1.25rem a 2.5rem */
   border-radius: .5rem;
   font-weight: 700;
   cursor: pointer;

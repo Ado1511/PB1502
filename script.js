@@ -199,3 +199,9 @@ function rsvpSubmit(e){
 
   return false;
 }
+
+// ===== Función para toggle de sección turismo =====
+function toggleTurismo() {
+  const cont = document.getElementById("turismo-content");
+  cont.classList.toggle("open");
+}

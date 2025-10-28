@@ -28,14 +28,14 @@
 }
 
 
-:root{ color-scheme: light; }
+:root{ color-scheme: dark; }
 
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{
   font-family:"Roboto Condensed",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
   color:var(--marron-oscuro);
-  background:var(--beige-claro);
+  background:var(--gris-200);
 }
 
 /* Layout helpers */

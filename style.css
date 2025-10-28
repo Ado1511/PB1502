@@ -35,7 +35,7 @@ html,body{margin:0;padding:0}
 body{
   font-family:"Roboto Condensed",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
   color:var(--marron-oscuro);
-  background:var(--gris-200);
+  background:#FAEDCD;
 }
 
 /* Layout helpers */

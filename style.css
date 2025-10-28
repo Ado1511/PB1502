@@ -335,11 +335,12 @@ button.is-loading{ opacity:.7; pointer-events:none; }
   background: var(--amarillo);
   color: var(--negro);
   border: none;
-  padding: .75rem 1.25rem;
+  padding: 1.5rem 1.25rem; /* doble de alto: de .75rem a 1.5rem */
   border-radius: .5rem;
   font-weight: 700;
   cursor: pointer;
   transition: background .3s;
+  font-size: 1.1rem; /* un poco más grande para mejor proporción */
 }
 .toggle-btn:hover { background: #F4EE9D; }
 

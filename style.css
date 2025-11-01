@@ -115,12 +115,12 @@ body{
   color:#000000;
 }
 .hero-box {
-  background: rgba(255, 255, 255, 0.6); /* blanco con transparencia */
+  background: rgba(255, 255, 255, 0.3); /* blanco con transparencia */
   backdrop-filter: blur(6px); /* efecto glass */
   -webkit-backdrop-filter: blur(6px);
   border-radius: 18px; 
   padding: 2rem;
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 /* En mobile, un poco más pequeño */

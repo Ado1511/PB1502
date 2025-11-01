@@ -149,15 +149,13 @@ body{
 }
 /* Estado ON TIME parpadeante */
 .fids td.status[data-status="ON TIME"] {
-  color: #4CAF50; /* verde */
+  color: #4CAF50;
   animation: blink-green 3s ease-in-out infinite;
 }
-
 @keyframes blink-green {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.3; }
 }
-
 .fids td.status::before{ content:"●"; margin-right:.45rem; filter:brightness(1.1); }
 .fids td.status[data-status="BOARDING"] { color:var(--beige-claro); }
 .fids td.status[data-status="GATE OPEN"]{ color:#03A9F4; }

@@ -192,18 +192,91 @@ body{
 }
 @media (prefers-reduced-motion:reduce){ .fids td.status .flip{ animation:none!important; } }
 
-/* Escalado */
-@media (min-width:200px){
-  #itinerario.container{ width:min(1200px,94%); }
-  #itinerario .fids table{ min-width:780px; }
-  #itinerario .fids th, #itinerario .fids td{ font-size:1rem; padding:1rem 1.2rem; }
-  #itinerario .fids td.status{ font-size:1.05rem; }
+/* ===== FIDS – Colores fijos también en mobile ===== */
+@media (max-width: 768px){
+  .fids{
+    background: var(--marron-rojizo);
+    color: var(--beige-claro);
+    border-color: var(--dorado);
+    border-radius: 12px;
+  }
+  .fids thead th{
+    background: var(--negro-850);
+    color: #fff;
+  }
+  .fids tbody tr:nth-child(odd){
+    background: rgba(255,255,255,.04);
+  }
+  .fids td.status{
+    color: var(--beige-claro);
+  }
 }
-@media (min-width:1100px){
-  #itinerario.container{ width:min(1280px,94%); }
-  #itinerario .fids table{ min-width:860px; }
-  #itinerario .fids th, #itinerario .fids td{ font-size:1.12rem; padding:1.2rem 1.45rem; }
-  #itinerario .fids td.status{ font-size:1.15rem; letter-spacing:2px; }
+
+/* ===== FIDS – Layout móvil consistente (scroll horizontal suave) ===== */
+.fids-wrapper{
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;            /* Firefox */
+}
+.fids-wrapper::-webkit-scrollbar{   /* WebKit */
+  height: 6px;
+}
+.fids-wrapper::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.25);
+  border-radius: 4px;
+}
+
+/* Teléfonos grandes (≤768px): tipografía y espaciado compactos */
+@media (max-width: 768px){
+  .fids table{ min-width: 640px; }           /* evita que se comprima la tabla */
+  .fids th, .fids td{
+    padding: .7rem .75rem;
+    font-size: .92rem;
+  }
+  .fids thead th{
+    font-size: .85rem;
+    letter-spacing: .6px;
+  }
+  .fids td.status{
+    font-size: .9rem;
+    letter-spacing: 1.5px;
+  }
+}
+
+/* Teléfonos medianos (≤480px) */
+@media (max-width: 480px){
+  .fids table{ min-width: 580px; }           /* asegura el mismo look con scroll */
+  .fids th, .fids td{
+    padding: .6rem .6rem;
+    font-size: .87rem;
+  }
+  .fids thead th{ font-size: .8rem; }
+  .fids td.status{ font-size: .86rem; }
+}
+
+/* Teléfonos pequeños (≤360px) */
+@media (max-width: 360px){
+  .fids table{ min-width: 540px; }
+  .fids th, .fids td{
+    padding: .55rem .55rem;
+    font-size: .83rem;
+  }
+  .fids thead th{ font-size: .78rem; }
+  .fids td.status{ font-size: .82rem; }
+}
+
+/* ===== FIDS – Escalado desktop (corrige tus reglas anteriores) ===== */
+@media (min-width: 900px){
+  #itinerario.container{ width: min(1200px, 94%); }
+  #itinerario .fids table{ min-width: 780px; }
+  #itinerario .fids th, #itinerario .fids td{ font-size: 1rem; padding: 1rem 1.2rem; }
+  #itinerario .fids td.status{ font-size: 1.05rem; }
+}
+@media (min-width: 1100px){
+  #itinerario.container{ width: min(1280px, 94%); }
+  #itinerario .fids table{ min-width: 860px; }
+  #itinerario .fids th, #itinerario .fids td{ font-size: 1.12rem; padding: 1.2rem 1.45rem; }
+  #itinerario .fids td.status{ font-size: 1.15rem; letter-spacing: 2px; }
 }
 
 /* === Travel Guide Cards === */

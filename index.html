@@ -190,8 +190,22 @@
           <label>Nombre y Apellido
             <input type="text" name="nombre" required>
           </label>
-          <label>Email
-            <input type="email" name="email" required>
+          <label>Preferencias de comida a bordo
+            <select name="restricciones" id="restricciones" onchange="toggleOtraComida(this)">
+              <option value="">Sin preferencia</option>
+              <option value="Vegetariano">Vegetariano</option>
+              <option value="Vegano">Vegano</option>
+              <option value="Sin gluten">Sin gluten</option>
+              <option value="Sin lactosa">Sin lactosa</option>
+              <option value="Kasher">Kasher</option>
+              <option value="Otra">Otra…</option>
+            </select>
+          </label>
+          
+          <!-- Campo que aparece solo si eligen “Otra” -->
+          <label id="restricciones-otra-wrap" style="display:none;">
+            Especificar preferencia
+            <input type="text" id="restricciones-otra" name="restricciones_otra" placeholder="Ej: sin nueces, low-sodium">
           </label>
           <label>Cantidad de pasajeros
             <input type="number" name="acompanantes" min="0" value="0">

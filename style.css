@@ -78,7 +78,7 @@ body{
 .site-nav a{ color:#fff; text-decoration:none; margin-left:1rem; font-weight:700; }
 .site-nav a:hover{ color:var(--dorado); }
 
-/* Hero */
+/* Hero */ 
 .hero {
   position: relative;
   min-height: 70vh;
@@ -193,7 +193,7 @@ body{
 @media (prefers-reduced-motion:reduce){ .fids td.status .flip{ animation:none!important; } }
 
 /* Escalado */
-@media (min-width:900px){
+@media (min-width:700px){
   #itinerario.container{ width:min(1200px,94%); }
   #itinerario .fids table{ min-width:780px; }
   #itinerario .fids th, #itinerario .fids td{ font-size:1rem; padding:1rem 1.2rem; }

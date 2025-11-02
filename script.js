@@ -88,6 +88,59 @@ function validateForm(form) {
 }
 
 // ===== Formulario RSVP → WhatsApp =====
+// Mostrar/ocultar el campo "Otra…" según la selección del menú
+function toggleOtraComida(selectEl){
+  const wrap = document.getElementById('restricciones-otra-wrap');
+  if(selectEl.value === 'Otra'){
+    wrap.style.display = 'block';
+  } else {
+    wrap.style.display = 'none';
+    const otro = document.getElementById('restricciones-otra');
+    if (otro) otro.value = '';
+  }
+}
+
+// Helper: abrir WhatsApp (ya lo tienes; inclúyelo si no está)
+function openWhatsApp(rawNumber, text) {
+  let n = String(rawNumber).replace(/[^\d]/g, '');
+  if (n.startsWith('00')) n = n.slice(2);
+  const msg = encodeURIComponent(text || '');
+  const url = `https://wa.me/${n}?text=${msg}`;
+  const fb  = `https://api.whatsapp.com/send?phone=${n}&text=${msg}`;
+  const w = window.open(url, '_blank');
+  setTimeout(() => { if (!w || w.closed) window.open(fb, '_blank'); }, 800);
+}
+
+// Validación mínima (sin email)
+function validateForm(form) {
+  let ok = true;
+
+  const nombre = form.nombre;
+  nombre.classList.remove('is-invalid');
+  if (!nombre.value.trim() || nombre.value.trim().length < 2) {
+    nombre.classList.add('is-invalid');
+    ok = false;
+  }
+
+  const acomp = form.acompanantes;
+  acomp.classList.remove('is-invalid');
+  const n = Number(acomp.value);
+  if (Number.isNaN(n) || n < 0 || n > 10) {
+    acomp.classList.add('is-invalid');
+    ok = false;
+  }
+
+  const asis = form.asistencia;
+  asis.classList.remove('is-invalid');
+  if (!asis.value) {
+    asis.classList.add('is-invalid');
+    ok = false;
+  }
+
+  return ok;
+}
+
+// ===== Envío RSVP → WhatsApp (sin Sheets, sin email)
 function rsvpSubmit(e){
   e.preventDefault();
   const form = e.target;
@@ -106,26 +159,28 @@ function rsvpSubmit(e){
   submitBtn.classList.add('is-loading');
   submitBtn.textContent = 'Enviando…';
 
+  // Tomar datos del form
   const data = Object.fromEntries(new FormData(form).entries());
+  const seleccion = data.restricciones || '';
+  const otra      = (data.restricciones_otra || '').trim();
+  const preferencia = (seleccion === 'Otra') ? (otra || 'Sin especificar') : (seleccion || 'Sin preferencia');
+
   const payload = {
-    nombre:        data.nombre?.trim() || '',
-    email:         data.email?.trim() || '',
+    nombre:        (data.nombre || '').trim(),
     asistencia:    data.asistencia || '',
     acompanantes:  data.acompanantes || '0',
-    comentarios:   data.comentarios?.trim() || ''
+    restricciones: preferencia
   };
 
+  // Mensaje de WhatsApp (integrado con tus líneas originales)
   const lines = [
     '✈️ *RSVP – Pame & Beto Airlines*',
     `👤 Nombre: ${payload.nombre || '-'}`,
-    `📧 Email: ${payload.email || '-'}`,
+    `🧳 Cantidad de pasajeros: ${payload.acompanantes || '0'}`,
+    `🍽️ Preferencias de comida a bordo: ${payload.restricciones}`,
     `✅ Asistencia: ${payload.asistencia === 'si' ? 'Sí, confirmo' : 'No podré'}`,
     `🗓️ Vuelo PB1502 – Corrientes 2026`
   ];
-  if (payload.acompanantes && payload.acompanantes !== '0') {
-    lines.splice(4, 0, `🧳 Cantidad de pasajeros: ${payload.acompanantes}`);
-  }
-  if (payload.comentarios) lines.push(`💬 Comentarios: ${payload.comentarios}`);
 
   const numeroWhatsApp = '972508840083';
   openWhatsApp(numeroWhatsApp, lines.join('\n'));
@@ -138,6 +193,9 @@ function rsvpSubmit(e){
   submitBtn.classList.remove('is-loading');
   submitBtn.textContent = originalBtnText;
 
+  // Ocultar el campo "Otra…" si quedó abierto
+  toggleOtraComida(document.getElementById('restricciones'));
+
   return false;
 }
 
@@ -145,4 +203,16 @@ function rsvpSubmit(e){
 function toggleTurismo() {
   const cont = document.getElementById("turismo-content");
   cont.classList.toggle("open");
+}
+
+// ===== Toggle de otra comida =====
+function toggleOtraComida(selectEl){
+  const wrap = document.getElementById('restricciones-otra-wrap');
+  if(selectEl.value === 'Otra'){
+    wrap.style.display = 'block';
+  } else {
+    wrap.style.display = 'none';
+    const otro = document.getElementById('restricciones-otra');
+    if (otro) otro.value = '';
+  }
 }

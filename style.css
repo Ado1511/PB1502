@@ -192,18 +192,91 @@ body{
 }
 @media (prefers-reduced-motion:reduce){ .fids td.status .flip{ animation:none!important; } }
 
-/* Escalado */
-@media (min-width:700px){
-  #itinerario.container{ width:min(1200px,94%); }
-  #itinerario .fids table{ min-width:780px; }
-  #itinerario .fids th, #itinerario .fids td{ font-size:1rem; padding:1rem 1.2rem; }
-  #itinerario .fids td.status{ font-size:1.05rem; }
+/* ===== FIDS – Colores fijos también en mobile ===== */
+@media (max-width: 768px){
+  .fids{
+    background: var(--marron-rojizo);
+    color: var(--beige-claro);
+    border-color: var(--dorado);
+    border-radius: 12px;
+  }
+  .fids thead th{
+    background: var(--negro-850);
+    color: #fff;
+  }
+  .fids tbody tr:nth-child(odd){
+    background: rgba(255,255,255,.04);
+  }
+  .fids td.status{
+    color: var(--beige-claro);
+  }
 }
-@media (min-width:1100px){
-  #itinerario.container{ width:min(1280px,94%); }
-  #itinerario .fids table{ min-width:860px; }
-  #itinerario .fids th, #itinerario .fids td{ font-size:1.12rem; padding:1.2rem 1.45rem; }
-  #itinerario .fids td.status{ font-size:1.15rem; letter-spacing:2px; }
+
+/* ===== FIDS – Layout móvil consistente (scroll horizontal suave) ===== */
+.fids-wrapper{
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;            /* Firefox */
+}
+.fids-wrapper::-webkit-scrollbar{   /* WebKit */
+  height: 6px;
+}
+.fids-wrapper::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.25);
+  border-radius: 4px;
+}
+
+/* Teléfonos grandes (≤768px): tipografía y espaciado compactos */
+@media (max-width: 768px){
+  .fids table{ min-width: 640px; }           /* evita que se comprima la tabla */
+  .fids th, .fids td{
+    padding: .7rem .75rem;
+    font-size: .92rem;
+  }
+  .fids thead th{
+    font-size: .85rem;
+    letter-spacing: .6px;
+  }
+  .fids td.status{
+    font-size: .9rem;
+    letter-spacing: 1.5px;
+  }
+}
+
+/* Teléfonos medianos (≤480px) */
+@media (max-width: 480px){
+  .fids table{ min-width: 580px; }           /* asegura el mismo look con scroll */
+  .fids th, .fids td{
+    padding: .6rem .6rem;
+    font-size: .87rem;
+  }
+  .fids thead th{ font-size: .8rem; }
+  .fids td.status{ font-size: .86rem; }
+}
+
+/* Teléfonos pequeños (≤360px) */
+@media (max-width: 360px){
+  .fids table{ min-width: 540px; }
+  .fids th, .fids td{
+    padding: .55rem .55rem;
+    font-size: .83rem;
+  }
+  .fids thead th{ font-size: .78rem; }
+  .fids td.status{ font-size: .82rem; }
+}
+
+/* ===== FIDS – Escalado desktop (corrige tus reglas anteriores) ===== */
+@media (min-width: 900px){
+  #itinerario.container{ width: min(1200px, 94%); }
+  #itinerario .fids table{ min-width: 780px; }
+  #itinerario .fids th, #itinerario .fids td{ font-size: 1rem; padding: 1rem 1.2rem; }
+  #itinerario .fids td.status{ font-size: 1.05rem; }
+}
+@media (min-width: 1100px){
+  #itinerario.container{ width: min(1280px, 94%); }
+  #itinerario .fids table{ min-width: 860px; }
+  #itinerario .fids th, #itinerario .fids td{ font-size: 1.12rem; padding: 1.2rem 1.45rem; }
+  #itinerario .fids td.status{ font-size: 1.15rem; letter-spacing: 2px; }
 }
 
 /* === Travel Guide Cards === */
@@ -241,6 +314,61 @@ body{
 .cards .btn:active{ transform:translateY(0); box-shadow:0 2px 6px rgba(0,0,0,.25); }
 @media (max-width:640px){
   .cards .btn{ width:100%; min-width:unset; margin-top:.75rem; }
+}
+.turismo-card {
+  background: var(--negro-750);
+  color: #fff;
+  border: 1px solid var(--dorado);
+  border-radius: 14px;
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  font-family: "Montserrat", sans-serif;
+}
+
+.turismo-card h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: .6rem;
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+}
+
+.turismo-card p {
+  font-size: .95rem;
+  line-height: 1.45;
+  margin: .4rem 0;
+}
+
+.contacto-turismo strong {
+  color: var(--amarillo);
+}
+@media (max-width: 640px) {
+  .turismo-card {
+    padding: 1.1rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+  }
+
+  .turismo-card h3 {
+    font-size: 1rem;
+    gap: .35rem;
+  }
+
+  .turismo-card p {
+    font-size: .9rem;
+    line-height: 1.4;
+  }
+
+  .turismo-card .btn {
+    width: 100%;
+    text-align: center;
+    padding: .7rem 1rem;
+    font-size: .9rem;
+    margin-top: .7rem;
+  }
 }
 
 /* ===== Regalos (datos bancarios) ===== */

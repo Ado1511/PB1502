@@ -133,68 +133,150 @@ body{
 
 
 
-/* --- FIDS: vista sin scroll horizontal en móviles --- */
-@media (max-width: 640px){
-  /* Nada de scroll lateral */
-  .fids-wrapper{
-    overflow: visible;
-  }
-  .fids table{
-    min-width: 0;          /* rompe el ancho mínimo fijo */
-    width: 100%;
-  }
+/* ===== FIDS (tablero aeropuerto) ===== */
+.fids{
+  background:var(--marron-rojizo);
+  color:var(--beige-claro);
+  border-radius:12px;
+  overflow:hidden;
+  border:2px solid var(--dorado);
+}
+.fids-wrapper{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.fids table{
+  width:100%; border-collapse:collapse; min-width:680px;
+}
+.fids thead th{
+  position:sticky; top:0;
+  background:var(--negro-850);
+  z-index:1; color:#fff;
+  text-transform:uppercase; font-family:"Montserrat",sans-serif;
+}
+.fids th,.fids td{
+  padding:.95rem 1.1rem;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  letter-spacing:.4px;
+}
+.fids tbody tr:nth-child(odd){ background:rgba(255,255,255,.04); }
 
-  /* Ocultamos encabezados y convertimos cada fila en "tarjeta" */
-  .fids thead{ 
-    display: none; 
+/* Estado */
+.fids td.status{
+  font-family:"Courier New",Courier,monospace;
+  text-transform:uppercase; letter-spacing:2px;
+  color:var(--beige-claro);
+  white-space:nowrap; position:relative; overflow:hidden;
+}
+/* Estado ON TIME parpadeante */
+.fids td.status[data-status="ON TIME"] {
+  color: #4CAF50;
+  animation: blink-green 3s ease-in-out infinite;
+}
+@keyframes blink-green {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.fids td.status::before{ content:"●"; margin-right:.45rem; filter:brightness(1.1); }
+.fids td.status[data-status="BOARDING"] { color:var(--beige-claro); }
+.fids td.status[data-status="GATE OPEN"]{ color:#03A9F4; }
+.fids td.status[data-status="SPECIAL"]  { color:#FF9800; }
+.fids td.status[data-status="FEST"]     { color:#E91E63; }
+.fids td.status .flip{
+  display:inline-block; transform-origin:center;
+  backface-visibility:hidden; transform-style:preserve-3d;
+  animation:flip-board .7s ease-in-out both;
+}
+@keyframes flip-board{
+  0%{transform:rotateX(0);opacity:1;}
+  45%{transform:rotateX(90deg);opacity:0;}
+  55%{transform:rotateX(-90deg);opacity:0;}
+  100%{transform:rotateX(0);opacity:1;}
+}
+@media (prefers-reduced-motion:reduce){ .fids td.status .flip{ animation:none!important; } }
+
+/* ===== FIDS – Colores fijos también en mobile ===== */
+@media (max-width: 768px){
+  .fids{
+    background: var(--marron-rojizo);
+    color: var(--beige-claro);
+    border-color: var(--dorado);
+    border-radius: 12px;
   }
-  .fids tbody tr{
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: .35rem;
-    padding: .85rem .9rem;
-    border-bottom: 1px solid rgba(255,255,255,.12);
-    background: rgba(0,0,0,.04);
-    border-radius: 10px;
-    margin-bottom: .75rem;
+  .fids thead th{
+    background: var(--negro-850);
+    color: #fff;
   }
   .fids tbody tr:nth-child(odd){
-    background: rgba(0,0,0,.07); /* rayado sutil */
+    background: rgba(255,255,255,.04);
   }
-
-  /* Cada celda en línea con su etiqueta */
-  .fids td{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: .4rem 0;                 /* más compacto */
-    border: 0;                        /* sin bordes internos */
-    font-size: .95rem;
-  }
-  .fids td::before{
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .3px;
-    opacity: .9;
-    margin-right: .75rem;
-  }
-
-  /* Etiquetas por columna (sin tocar HTML) */
-  .fids td:nth-child(1)::before{ content: "Fecha"; }
-  .fids td:nth-child(2)::before{ content: "Evento"; }
-  .fids td:nth-child(3)::before{ content: "Hora"; }
-  .fids td:nth-child(4)::before{ content: "Lugar"; }
-  .fids td:nth-child(5)::before{ content: "Estado"; }
-
-  /* Estado alineado a la derecha y en mayúsculas */
   .fids td.status{
-    justify-content: space-between;   /* etiqueta + valor */
-    font-family: "Courier New", Courier, monospace;
-    font-size: 1rem;
+    color: var(--beige-claro);
   }
-  .fids td.status .flip{
-    display: inline-block;
+}
+
+/* ===== FIDS – Layout móvil consistente (scroll horizontal suave) ===== */
+.fids-wrapper{
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;            /* Firefox */
+}
+.fids-wrapper::-webkit-scrollbar{   /* WebKit */
+  height: 6px;
+}
+.fids-wrapper::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.25);
+  border-radius: 4px;
+}
+
+/* Teléfonos grandes (≤768px): tipografía y espaciado compactos */
+@media (max-width: 768px){
+  .fids table{ min-width: 640px; }           /* evita que se comprima la tabla */
+  .fids th, .fids td{
+    padding: .7rem .75rem;
+    font-size: .92rem;
   }
+  .fids thead th{
+    font-size: .85rem;
+    letter-spacing: .6px;
+  }
+  .fids td.status{
+    font-size: .9rem;
+    letter-spacing: 1.5px;
+  }
+}
+
+/* Teléfonos medianos (≤480px) */
+@media (max-width: 480px){
+  .fids table{ min-width: 580px; }           /* asegura el mismo look con scroll */
+  .fids th, .fids td{
+    padding: .6rem .6rem;
+    font-size: .87rem;
+  }
+  .fids thead th{ font-size: .8rem; }
+  .fids td.status{ font-size: .86rem; }
+}
+
+/* Teléfonos pequeños (≤360px) */
+@media (max-width: 360px){
+  .fids table{ min-width: 540px; }
+  .fids th, .fids td{
+    padding: .55rem .55rem;
+    font-size: .83rem;
+  }
+  .fids thead th{ font-size: .78rem; }
+  .fids td.status{ font-size: .82rem; }
+}
+
+/* ===== FIDS – Escalado desktop (corrige tus reglas anteriores) ===== */
+@media (min-width: 900px){
+  #itinerario.container{ width: min(1200px, 94%); }
+  #itinerario .fids table{ min-width: 780px; }
+  #itinerario .fids th, #itinerario .fids td{ font-size: 1rem; padding: 1rem 1.2rem; }
+  #itinerario .fids td.status{ font-size: 1.05rem; }
+}
+@media (min-width: 1100px){
+  #itinerario.container{ width: min(1280px, 94%); }
+  #itinerario .fids table{ min-width: 860px; }
+  #itinerario .fids th, #itinerario .fids td{ font-size: 1.12rem; padding: 1.2rem 1.45rem; }
+  #itinerario .fids td.status{ font-size: 1.15rem; letter-spacing: 2px; }
 }
 
 /* === Travel Guide Cards === */

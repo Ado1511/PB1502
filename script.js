@@ -215,4 +215,15 @@ function toggleOtraComida(selectEl){
     const otro = document.getElementById('restricciones-otra');
     if (otro) otro.value = '';
   }
+  // comvierte la tabla a movil con el mismo estilo que la tabla de desktop//
 }
+document.addEventListener('DOMContentLoaded', () => {
+  const table = document.querySelector('#itinerario .fids table');
+  if (!table) return;
+  const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+  table.querySelectorAll('tbody tr').forEach(row => {
+    Array.from(row.children).forEach((td, idx) => {
+      td.setAttribute('data-label', headers[idx] || '');
+    });
+  });
+});

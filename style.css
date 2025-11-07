@@ -192,93 +192,107 @@ body{
 }
 @media (prefers-reduced-motion:reduce){ .fids td.status .flip{ animation:none!important; } }
 
-/* ===== FIDS – Colores fijos también en mobile ===== */
-@media (max-width: 768px){
+/* ===== FIDS: móvil sin scroll, con estética original ===== */
+@media (max-width: 600px){
+  /* Contenedor conserva tu look */
   .fids{
     background: var(--marron-rojizo);
     color: var(--beige-claro);
-    border-color: var(--dorado);
+    border: 2px solid var(--dorado);
     border-radius: 12px;
+    padding: .35rem .35rem .6rem; /* leve respiro interno */
   }
-  .fids thead th{
-    background: var(--negro-850);
-    color: #fff;
+
+  /* Convertimos tabla a “tarjetas” por fila */
+  .fids table,
+  .fids thead,
+  .fids tbody,
+  .fids tr,
+  .fids th,
+  .fids td {
+    display: block;
+    width: 100%;
+    border: 0;
   }
-  .fids tbody tr:nth-child(odd){
+
+  /* Cabecera oculta (usaremos data-label) */
+  .fids thead{
+    position: absolute;
+    left: -9999px; top: -9999px;
+    height: 0; width: 0; overflow: hidden;
+  }
+
+  /* Cada fila = tarjeta con el mismo mood */
+  .fids tbody tr{
     background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.18);
+    margin: .85rem 0;
+    padding: .9rem .95rem;
   }
+
+  /* Cada celda con label + valor (grid 2 columnas) */
+  .fids td{
+    display: grid;
+    grid-template-columns: 9.5rem 1fr;  /* label + valor */
+    gap: .55rem;
+    padding: .45rem 0;
+    font-size: .95rem;
+    align-items: baseline;
+  }
+
+  /* Label visual (toma texto del <th> vía data-label) */
+  .fids td::before{
+    content: attr(data-label);
+    color: var(--gris-300);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  /* Columna ESTADO con el mismo “vibe” */
   .fids td.status{
+    font-family: "Courier New", Courier, monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     color: var(--beige-claro);
+    padding-top: .6rem;
   }
+  .fids td.status .flip{
+    display: inline-block;
+  }
+
+  /* Colores por estado (idénticos a desktop) */
+  .fids td.status[data-status="ON TIME"]  { color: #4CAF50; }
+  .fids td.status[data-status="BOARDING"] { color: var(--beige-claro); }
+  .fids td.status[data-status="GATE OPEN"]{ color: #03A9F4; }
+  .fids td.status[data-status="SPECIAL"]  { color: #FF9800; }
+  .fids td.status[data-status="FEST"]     { color: #E91E63; }
+
+  /* Ajustes finos tipográficos para caber perfecto */
+  .fids td{ font-size: .92rem; }
+  .fids td.status{ font-size: .95rem; }
 }
 
-/* ===== FIDS – Layout móvil consistente (scroll horizontal suave) ===== */
-.fids-wrapper{
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;            /* Firefox */
-}
-.fids-wrapper::-webkit-scrollbar{   /* WebKit */
-  height: 6px;
-}
-.fids-wrapper::-webkit-scrollbar-thumb{
-  background: rgba(255,255,255,.25);
-  border-radius: 4px;
-}
-
-/* Teléfonos grandes (≤768px): tipografía y espaciado compactos */
-@media (max-width: 768px){
-  .fids table{ min-width: 640px; }           /* evita que se comprima la tabla */
-  .fids th, .fids td{
-    padding: .7rem .75rem;
-    font-size: .92rem;
-  }
-  .fids thead th{
-    font-size: .85rem;
-    letter-spacing: .6px;
-  }
-  .fids td.status{
-    font-size: .9rem;
-    letter-spacing: 1.5px;
-  }
-}
-
-/* Teléfonos medianos (≤480px) */
+/* Teléfonos medianos */
 @media (max-width: 480px){
-  .fids table{ min-width: 580px; }           /* asegura el mismo look con scroll */
-  .fids th, .fids td{
-    padding: .6rem .6rem;
-    font-size: .87rem;
+  .fids td{
+    grid-template-columns: 8.5rem 1fr;
+    font-size: .9rem;
   }
-  .fids thead th{ font-size: .8rem; }
-  .fids td.status{ font-size: .86rem; }
+  .fids td.status{ font-size: .93rem; }
 }
 
-/* Teléfonos pequeños (≤360px) */
+/* Teléfonos pequeños */
 @media (max-width: 360px){
-  .fids table{ min-width: 540px; }
-  .fids th, .fids td{
-    padding: .55rem .55rem;
-    font-size: .83rem;
+  .fids td{
+    grid-template-columns: 7.8rem 1fr;
+    font-size: .86rem;
   }
-  .fids thead th{ font-size: .78rem; }
-  .fids td.status{ font-size: .82rem; }
+  .fids td.status{ font-size: .9rem; }
 }
-
-/* ===== FIDS – Escalado desktop (corrige tus reglas anteriores) ===== */
-@media (min-width: 900px){
-  #itinerario.container{ width: min(1200px, 94%); }
-  #itinerario .fids table{ min-width: 780px; }
-  #itinerario .fids th, #itinerario .fids td{ font-size: 1rem; padding: 1rem 1.2rem; }
-  #itinerario .fids td.status{ font-size: 1.05rem; }
-}
-@media (min-width: 1100px){
-  #itinerario.container{ width: min(1280px, 94%); }
-  #itinerario .fids table{ min-width: 860px; }
-  #itinerario .fids th, #itinerario .fids td{ font-size: 1.12rem; padding: 1.2rem 1.45rem; }
-  #itinerario .fids td.status{ font-size: 1.15rem; letter-spacing: 2px; }
-}
-
 /* === Travel Guide Cards === */
 .cards{
   display:grid; gap:1.5rem;

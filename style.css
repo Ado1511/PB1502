@@ -124,12 +124,22 @@ body{
 }
 
 /* En mobile, un poco más pequeño */
-@media(max-width: 768px) {
-  .hero-box {
-    padding: 1.2rem;
-    margin-top: 120px; /* más espacio para el contador */
+@media (max-width: 768px) {
+  .hero .title {
+    margin-top: 160px;
+  }
+
+  .hero .title #countdown {
+    position: relative;
+    display: block;
+    margin-top: 1rem;
+    left: auto;
+    transform: none;
+    bottom: auto;
+    text-align: center;
   }
 }
+
 
 
 
@@ -295,6 +305,12 @@ body{
 
 .contacto-turismo strong {
   color: var(--amarillo);
+}
+
+@media (max-width: 768px) {
+  .turismo-content.open {
+    max-height: none;
+  }
 }
 
 /* ===== Regalos (datos bancarios) ===== */

@@ -192,6 +192,21 @@ body{
 }
 @media (prefers-reduced-motion:reduce){ .fids td.status .flip{ animation:none!important; } }
 
+/* ===== FIDS – Preparado para auto-escala ===== */
+#itinerario .fids{
+  position: relative;
+}
+
+#itinerario .fids-wrapper{
+  overflow: visible;  /* tiene que estar visible para que la escala no corte nada */
+}
+
+#itinerario .fids table{
+  transform-origin: top left;
+  will-change: transform;
+  display: inline-block; /* necesario para calcular bien el ancho natural */
+}
+
 /* ===== FIDS: móvil sin scroll, con estética original ===== */
 @media (max-width: 600px){
   /* Contenedor conserva tu look */

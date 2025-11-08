@@ -215,9 +215,8 @@ function toggleOtraComida(selectEl){
     const otro = document.getElementById('restricciones-otra');
     if (otro) otro.value = '';
   }
-  // comvierte la tabla a movil con el mismo estilo que la tabla de desktop//
-}
-document.addEventListener('DOMContentLoaded', () => {
+ }
+/*document.addEventListener('DOMContentLoaded', () => {
   const table = document.querySelector('#itinerario .fids table');
   if (!table) return;
   const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
@@ -226,4 +225,29 @@ document.addEventListener('DOMContentLoaded', () => {
       td.setAttribute('data-label', headers[idx] || '');
     });
   });
-});
+});*/
+
+
+function fitFidsToViewport(){
+  const container = document.querySelector('#itinerario .fids');
+  const table     = document.querySelector('#itinerario .fids table');
+  if(!container || !table) return;
+
+  // Reseteo antes de medir
+  table.style.transform = 'none';
+
+  const vw    = container.clientWidth;   // ancho disponible
+  const need  = table.scrollWidth;       // ancho natural de la tabla
+  const scale = Math.min(1, vw / need);  // nunca mayor a 1 (no agrandar en desktop)
+
+  table.style.transform = `scale(${scale})`;
+
+  // Ajustar la altura del contenedor para que no se “corte”
+  const rect = table.getBoundingClientRect();
+  container.style.height = rect.height + 'px';
+}
+
+// Ejecutar en carga y en resize/orientation
+document.addEventListener('DOMContentLoaded', fitFidsToViewport);
+window.addEventListener('resize', fitFidsToViewport);
+window.addEventListener('orientationchange', fitFidsToViewport);

@@ -206,6 +206,30 @@ body{
   #itinerario .fids td.status{ font-size:1.15rem; letter-spacing:2px; }
 }
 
+@media (max-width: 768px) {
+  #itinerario .fids-wrapper {
+    overflow-x: hidden; /* ✅ Anula scroll horizontal */
+  }
+
+  #itinerario .fids table {
+    min-width: unset;   /* ✅ Permite achicarse */
+    width: 100%;        /* ✅ Usa todo el ancho disponible */
+    table-layout: fixed; /* ✅ Distribución equitativa */
+  }
+
+  #itinerario .fids th,
+  #itinerario .fids td {
+    font-size: 0.85rem;  /* ✅ Texto más pequeño */
+    padding: 0.5rem 0.4rem; /* ✅ Menos espacio */
+    word-break: break-word; /* ✅ Corta palabras largas si hace falta */
+  }
+
+  #itinerario .fids td.status {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+}
+
 /* === Travel Guide Cards === */
 .cards{
   display:grid; gap:1.5rem;

@@ -471,3 +471,30 @@ button.is-loading{ opacity:.7; pointer-events:none; }
   padding: 1rem;
   transition: opacity 0.6s ease, padding 0.4s ease;
 }
+/* Contador en mobile */
+
+@media (max-width: 768px) {
+  #countdown {
+    display: inline-block;
+    font-size: 0.85rem;         /* más chico para que quepa */
+    white-space: nowrap;        /* ❗ fuerza una sola línea */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0.5rem 0.9rem;
+    margin-top: 1rem;
+    background: var(--amarillo);
+    color: var(--negro);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero .title {
+    margin-top: 120px;  /* Ajuste fino por si el contador baja */
+  }
+
+  .hero-box {
+    padding-bottom: 2.5rem; /* Espacio extra para que el contador no choque */
+  }
+}

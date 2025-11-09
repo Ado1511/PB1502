@@ -474,27 +474,27 @@ button.is-loading{ opacity:.7; pointer-events:none; }
 /* Contador en mobile */
 
 @media (max-width: 768px) {
-  #countdown {
+  #countdown,
+  .countdown-inline {
     display: inline-block;
-    font-size: 0.85rem;         /* más chico para que quepa */
-    white-space: nowrap;        /* ❗ fuerza una sola línea */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 0.5rem 0.9rem;
-    margin-top: 1rem;
+    font-weight: 700;
+    font-size: 0.85rem;
     background: var(--amarillo);
     color: var(--negro);
+    padding: 0.4rem 0.75rem;
     border-radius: 0.5rem;
+    white-space: nowrap;
+    margin-top: 0.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     max-width: 100%;
     text-align: center;
   }
 
   .hero .title {
-    margin-top: 120px;  /* Ajuste fino por si el contador baja */
+    margin-top: 120px;
   }
 
   .hero-box {
-    padding-bottom: 2.5rem; /* Espacio extra para que el contador no choque */
+    padding-bottom: 2rem;
   }
 }

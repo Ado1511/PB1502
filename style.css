@@ -239,6 +239,33 @@ body{
     letter-spacing: 1px;
   }
 }
+@media (max-width: 768px) {
+  #itinerario .fids-wrapper {
+    overflow-x: hidden;
+  }
+
+  #itinerario .fids table {
+    width: 100%;
+    min-width: unset;
+    table-layout: auto;
+  }
+
+  #itinerario .fids th,
+  #itinerario .fids td {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.5rem;
+    word-break: normal;
+    white-space: normal;
+    overflow-wrap: break-word;
+    text-align: left;
+  }
+
+  #itinerario .fids td.status {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+}
 
 /* === Travel Guide Cards === */
 .cards{

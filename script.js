@@ -173,21 +173,17 @@ function rsvpSubmit(e){
   };
 
   // Mensaje de WhatsApp (integrado con tus líneas originales)
-  const asistenciaEmoji = payload.asistencia === 'si' ? '✅' : '❌';
-  const asistenciaTexto = payload.asistencia === 'si' ? 'Sí, confirmo' : 'No podré';
-  
   const lines = [
     '✈️ *RSVP – Pame & Beto Airlines*',
     `👤 Nombre: ${payload.nombre || '-'}`,
     `🧳 Cantidad de pasajeros: ${payload.acompanantes || '0'}`,
     `🍽️ Preferencias de comida a bordo: ${payload.restricciones}`,
-    `${asistenciaEmoji} Asistencia: ${asistenciaTexto}`,
+    `✅ Asistencia: ${payload.asistencia === 'si' ? 'Sí, confirmo' : 'No podré'}`,
     `🗓️ Vuelo PB1502 – Corrientes 2026`
   ];
-  
+
   const numeroWhatsApp = '972508840083';
-  const mensajeFinal = encodeURIComponent(lines.join('\n'));
-  openWhatsApp(numeroWhatsApp, mensajeFinal);
+  openWhatsApp(numeroWhatsApp, lines.join('\n'));
 
   msgBox.textContent = `¡Gracias ${payload.nombre || ''}! Recibimos tu check-in.`;
   msgBox.className = 'ok-msg';

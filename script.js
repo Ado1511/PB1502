@@ -181,7 +181,7 @@ function rsvpSubmit(e){
     `✅ Asistencia: ${payload.asistencia === 'si' ? 'Sí, confirmo' : 'No podré'}`,
     `🗓️ Vuelo PB1502 – Corrientes 2026`
   ];
-
+  
   const numeroWhatsApp = '972508840083';
   openWhatsApp(numeroWhatsApp, lines.join('\n'));
 

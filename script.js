@@ -188,7 +188,7 @@ const lines = [
 ];
 
 const numeroWhatsApp = '972508840083';
-const mensajeFinal = encodeURIComponent(lines.join('\n'));
+const mensajeFinal = lines.join('\n');   // NO usar encode aquí
 openWhatsApp(numeroWhatsApp, mensajeFinal);
 
   msgBox.textContent = `¡Gracias ${payload.nombre || ''}! Recibimos tu check-in.`;
